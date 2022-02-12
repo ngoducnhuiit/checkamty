@@ -6,6 +6,11 @@ use Magento\Framework\DataObject;
 use Magento\Framework\Registry;
 use Amasty\ShopbyPage\Model\Page;
 
+/**
+ * Class Meta
+ *
+ * @package Amasty\ShopbyPage\Plugin\ShopbySeo\Helper
+ */
 class Meta
 {
     /**

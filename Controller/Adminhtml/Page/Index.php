@@ -6,6 +6,11 @@ use Magento\Backend\App\Action\Context;
 use Magento\Framework\View\Result\PageFactory;
 use Magento\Backend\App\Action;
 
+/**
+ * Class Index
+ *
+ * @package Amasty\ShopbyPage\Controller\Adminhtml\Page
+ */
 class Index extends Action
 {
     /**

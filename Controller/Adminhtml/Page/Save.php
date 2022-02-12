@@ -10,6 +10,11 @@ use Magento\Framework\Api\ExtensibleDataObjectConverter;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\File\Uploader;
 
+/**
+ * Class Save
+ *
+ * @package Amasty\ShopbyPage\Controller\Adminhtml\Page
+ */
 class Save extends Action
 {
     /**

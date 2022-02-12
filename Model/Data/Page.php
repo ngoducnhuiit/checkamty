@@ -15,7 +15,7 @@ use Magento\Store\Model\StoreManagerInterface;
 
 class Page extends AbstractExtensibleObject implements PageInterface
 {
-    public const IMAGES_DIR = '/amasty/shopby/page_images/';
+    const IMAGES_DIR = '/amasty/shopby/page_images/';
 
     /**
      * @var Filesystem
@@ -345,9 +345,8 @@ class Page extends AbstractExtensibleObject implements PageInterface
         if (!$this->getImage()) {
             return null;
         }
-
-        $baseUrl = $this->storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
-        $url = rtrim($baseUrl, '/') . self::IMAGES_DIR . $this->getImage();
+        $url = $this->storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA) .
+            self::IMAGES_DIR . $this->getImage();
 
         return $url;
     }

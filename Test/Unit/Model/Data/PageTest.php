@@ -19,9 +19,9 @@ class PageTest extends \PHPUnit\Framework\TestCase
     use Traits\ObjectManagerTrait;
     use Traits\ReflectionTrait;
 
-    public const SITE_MEDIA = 'http://site.com/pub/media';
-    public const IMAGE_NAME = 'image.jpg';
-    public const MEDIA_ABSOLUTE_PATH = '/absolute/path/media';
+    const SITE_MEDIA = 'http://site.com/pub/media';
+    const IMAGE_NAME = 'image.jpg';
+    const MEDIA_ABSOLUTE_PATH = '/absolute/path/media';
 
     /**
      * @covers Page::getImageUrl

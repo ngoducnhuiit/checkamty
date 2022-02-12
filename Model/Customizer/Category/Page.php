@@ -1,15 +1,11 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Amasty\ShopbyPage\Model\Customizer\Category;
 
 use Amasty\Shopby\Helper\Data as ShopbyHelper;
 use Amasty\Shopby\Model\Request;
-use Amasty\ShopbyBase\Api\Data\FilterSettingInterface;
 use Amasty\ShopbyBase\Model\Category\Manager as CategoryManager;
 use Amasty\ShopbyBase\Model\Customizer\Category\CustomizerInterface;
-use Amasty\ShopbyBase\Model\FilterSetting\IsMultiselect;
 use Amasty\ShopbyPage\Api\Data\PageInterface;
 use Amasty\ShopbyPage\Api\PageRepositoryInterface;
 use Amasty\ShopbyPage\Model\Page as PageEntity;
@@ -65,11 +61,6 @@ class Page implements CustomizerInterface
      */
     private $urlBuilder;
 
-    /**
-     * @var IsMultiselect
-     */
-    private $isMultiselect;
-
     public function __construct(
         PageRepositoryInterface $pageRepository,
         CatalogConfig $catalogConfig,
@@ -78,8 +69,7 @@ class Page implements CustomizerInterface
         ScopeConfigInterface $scopeConfig,
         ShopbyHelper $shopbyHelper,
         FilterSetting $filterSettingHelper,
-        UrlInterface $urlBuilder,
-        IsMultiselect $isMultiselect
+        UrlInterface $urlBuilder
     ) {
         $this->pageRepository = $pageRepository;
         $this->catalogConfig = $catalogConfig;
@@ -89,7 +79,6 @@ class Page implements CustomizerInterface
         $this->scopeConfig = $scopeConfig;
         $this->filterSettingHelper = $filterSettingHelper;
         $this->urlBuilder = $urlBuilder;
-        $this->isMultiselect = $isMultiselect;
     }
 
     /**
@@ -168,21 +157,22 @@ class Page implements CustomizerInterface
     }
 
     /**
-     * @param string $attributeId
+     * @param string $attributeCode
      * @param string $attributeValue
      *
      * @return bool
      */
-    private function isConditionNotMatched($attributeId, $attributeValue)
+    private function isConditionNotMatched($attributeCode, $attributeValue)
     {
-        $result = true;
+        $result = false;
+        $attribute = $this->catalogConfig->getAttribute(Product::ENTITY, $attributeCode);
+        $filterSetting = $this->filterSettingHelper->getSettingByAttribute($attribute);
 
-        $attribute = $this->catalogConfig->getAttribute(Product::ENTITY, $attributeId);
-        $paramValue = $this->amshopbyRequest->getParam($attribute->getAttributeCode());
-        if ($paramValue && $attribute->getId()) {
-            $filterSetting = $this->filterSettingHelper->getSettingByAttribute($attribute);
+        if ($attribute->getId()) {
+            $paramValue = $this->amshopbyRequest->getParam($attribute->getAttributeCode());
+
             //compare with array for multiselect attributes
-            if ($this->isMultiselect($filterSetting)) {
+            if ($filterSetting->isMultiselect()) {
                 $result = $this->checkMultiselectAttribute($paramValue, $attributeValue);
             } else {
                 $result = !$this->checkSingleSelectAttribute($paramValue, $attributeValue);
@@ -202,7 +192,7 @@ class Page implements CustomizerInterface
     private function checkMultiselectAttribute($currentValue, $expectedValue, $useStrict = false)
     {
         $result = false;
-        $currentValue = explode(',', (string) $currentValue);
+        $currentValue = explode(',', $currentValue);
         sort($currentValue);
         if (!is_array($expectedValue)) {
             $expectedValue = [$expectedValue];
@@ -230,7 +220,7 @@ class Page implements CustomizerInterface
 
         $result = $currentValue == $expectedValue;
 
-        if (!$result && $currentValue && strpos($currentValue, ',') !== false) {
+        if (!$result && strpos($currentValue, ',') !== false) {
             $currentValue = explode(',', $currentValue);
             $result = in_array($expectedValue, $currentValue);
         }
@@ -246,8 +236,6 @@ class Page implements CustomizerInterface
     {
         $strict = true;
         $appliedFilters = $this->shopbyHelper->getSelectedFiltersSettings();
-        //TODO need refactor - create new filterList without category for this file
-        $appliedFilters = $this->removeCategoryFilter($appliedFilters);
         $conditions = $this->findSameConditionsAndConvert($conditions);
 
         if (count($appliedFilters) != count($conditions)) {
@@ -307,7 +295,7 @@ class Page implements CustomizerInterface
 
         foreach ($conditions as $condition) {
             if ($condition['filter'] == $attribute->getAttributeId()) {
-                if ($this->isMultiselect($filterSetting)) {
+                if ($filterSetting->isMultiselect()) {
                     if (!isset($condition['value'])
                         || $this->checkMultiselectAttribute($paramValue, $condition['value'], $useStrict)
                     ) {
@@ -365,7 +353,7 @@ class Page implements CustomizerInterface
         $delimiter
     ) {
         //if has a delimiter, place at the start or end
-        $categoryValueArr = explode($delimiter, (string) $categoryValue);
+        $categoryValueArr = explode($delimiter, $categoryValue);
 
         if ($position === PageEntity::POSITION_AFTER) {
             $categoryValueArr[] = $pageValue;
@@ -428,26 +416,5 @@ class Page implements CustomizerInterface
         if ($page->getUrl()) {
             $category->setData(PageEntity::CATEGORY_FORCE_USE_CANONICAL, 1);
         }
-    }
-
-    private function isMultiselect(FilterSettingInterface $filterSetting): bool
-    {
-        return $this->isMultiselect->execute(
-            $filterSetting->getAttributeCode(),
-            $filterSetting->isMultiselect(),
-            $filterSetting->getDisplayMode()
-        );
-    }
-
-    private function removeCategoryFilter(array $appliedFilters): array
-    {
-        foreach ($appliedFilters as $key => $appliedFilter) {
-            $filterModel = $appliedFilter['filter'] ?? null;
-            if ($filterModel instanceof \Amasty\Shopby\Model\Layer\Filter\Category && !$filterModel->isMultiselect()) {
-                unset($appliedFilters[$key]);
-            }
-        }
-
-        return $appliedFilters;
     }
 }

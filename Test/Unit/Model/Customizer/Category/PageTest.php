@@ -118,7 +118,7 @@ class PageTest extends \PHPUnit\Framework\TestCase
         $this->assertTrue($this->invokeMethod($this->model, 'matchCurrentFilters', [$pageData]));
         $this->assertTrue($this->invokeMethod($this->model, 'matchCurrentFilters', [$pageData]));
         $this->assertFalse($this->invokeMethod($this->model, 'matchCurrentFilters', [$pageData]));
-        $this->assertFalse($this->invokeMethod($this->model, 'matchCurrentFilters', [$pageData]));
+        $this->assertTrue($this->invokeMethod($this->model, 'matchCurrentFilters', [$pageData]));
     }
 
     /**

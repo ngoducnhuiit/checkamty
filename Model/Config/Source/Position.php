@@ -5,6 +5,11 @@ namespace Amasty\ShopbyPage\Model\Config\Source;
 use Magento\Framework\Option\ArrayInterface;
 use Amasty\ShopbyPage\Model\Page;
 
+/**
+ * Class Position
+ *
+ * @package Amasty\ShopbyPage\Model\Config\Source
+ */
 class Position implements ArrayInterface
 {
     /**

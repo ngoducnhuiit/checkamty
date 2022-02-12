@@ -7,6 +7,11 @@ use Magento\Framework\View\Result\PageFactory;
 use Magento\Framework\Registry as CoreRegistry;
 use Amasty\ShopbyPage\Controller\RegistryConstants;
 
+/**
+ * Class NewAction
+ *
+ * @package Amasty\ShopbyPage\Controller\Adminhtml\Page
+ */
 class NewAction extends Action
 {
     /**
@@ -24,7 +29,6 @@ class NewAction extends Action
      */
     public function execute()
     {
-        // phpcs:ignore Magento2.Legacy.ObsoleteResponse.ForwardResponseMethodFound
         $this->_forward('edit');
     }
 }

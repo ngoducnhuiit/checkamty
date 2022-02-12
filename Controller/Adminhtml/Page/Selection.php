@@ -12,9 +12,16 @@ use Magento\Framework\Registry as CoreRegistry;
 use Amasty\ShopbyPage\Controller\RegistryConstants;
 use Magento\Framework\Exception\LocalizedException;
 
+/**
+ * Class Selection
+ *
+ * @package Amasty\ShopbyPage\Controller\Adminhtml\Page
+ */
 class Selection extends Action
 {
     /**
+     * Core registry
+     *
      * @var CoreRegistry
      */
     protected $_coreRegistry = null;

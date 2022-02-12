@@ -2,6 +2,11 @@
 
 namespace Amasty\ShopbyPage\Block\Adminhtml\Page\Edit;
 
+/**
+ * Class Form
+ *
+ * @package Amasty\ShopbyPage\Block\Adminhtml\Page\Edit
+ */
 class Form extends \Magento\Backend\Block\Widget\Form\Generic
 {
     /**

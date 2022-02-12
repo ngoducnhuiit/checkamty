@@ -9,6 +9,11 @@ use Magento\Ui\Component\MassAction\Filter;
 use Amasty\ShopbyPage\Model\ResourceModel\Page\CollectionFactory;
 use Amasty\ShopbyPage\Api\PageRepositoryInterface;
 
+/**
+ * Class MassDelete
+ *
+ * @package Amasty\ShopbyPage\Controller\Adminhtml\Page
+ */
 class MassDelete extends Action
 {
     /**

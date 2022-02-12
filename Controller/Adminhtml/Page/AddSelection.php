@@ -16,6 +16,11 @@ use Amasty\ShopbyPage\Model\Config\Source\Attribute as SourceAttribute;
 use Magento\Backend\Block\Widget\Form\Renderer\Fieldset as FieldsetRenderer;
 use Magento\Framework\Data\FormFactory;
 
+/**
+ * Class AddSelection
+ *
+ * @package Amasty\ShopbyPage\Controller\Adminhtml\Page
+ */
 class AddSelection extends Action
 {
     /**

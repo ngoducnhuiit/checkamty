@@ -5,6 +5,11 @@ namespace Amasty\ShopbyPage\Plugin\Catalog\Helper;
 use Magento\Catalog\Helper\Category as CategoryHelper;
 use Amasty\ShopbyPage\Model\Page;
 
+/**
+ * Class Category
+ *
+ * @package Amasty\ShopbyPage\Plugin\Catalog\Helper
+ */
 class Category
 {
     /**

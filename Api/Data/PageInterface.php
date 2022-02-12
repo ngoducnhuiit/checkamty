@@ -9,21 +9,21 @@ interface PageInterface extends ExtensibleDataInterface
     /**#@+
      * Constants for keys of data array. Identical to the getters in snake case
      */
-    public const PAGE_ID = 'page_id';
-    public const POSITION = 'position';
-    public const URL = 'url';
-    public const TITLE = 'title';
-    public const DESCRIPTION = 'description';
-    public const META_TITLE = 'meta_title';
-    public const META_KEYWORDS = 'meta_keywords';
-    public const META_DESCRIPTION = 'meta_description';
-    public const CONDITIONS = 'conditions';
-    public const CATEGORIES = 'categories';
-    public const TOP_BLOCK_ID = 'top_block_id';
-    public const BOTTOM_BLOCK_ID = 'bottom_block_id';
-    public const STORES = 'stores';
-    public const IMAGE = 'image';
-    public const TABLE_NAME = 'amasty_amshopby_page';
+    const PAGE_ID = 'page_id';
+    const POSITION = 'position';
+    const URL = 'url';
+    const TITLE = 'title';
+    const DESCRIPTION = 'description';
+    const META_TITLE = 'meta_title';
+    const META_KEYWORDS = 'meta_keywords';
+    const META_DESCRIPTION = 'meta_description';
+    const CONDITIONS = 'conditions';
+    const CATEGORIES = 'categories';
+    const TOP_BLOCK_ID = 'top_block_id';
+    const BOTTOM_BLOCK_ID = 'bottom_block_id';
+    const STORES = 'stores';
+    const IMAGE = 'image';
+    const TABLE_NAME = 'amasty_amshopby_page';
 
     /**
      * @return int

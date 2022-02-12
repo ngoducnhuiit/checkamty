@@ -5,9 +5,14 @@ namespace Amasty\ShopbyPage\Model\ResourceModel\Page;
 use \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 use Magento\Store\Model\Store;
 
+/**
+ * Class Collection
+ *
+ * @package Amasty\ShopbyPage\Model\ResourceModel\Page
+ */
 class Collection extends AbstractCollection
 {
-    public const PAGE_STORE_TABLE = 'amasty_amshopby_page_store';
+    const PAGE_STORE_TABLE = 'amasty_amshopby_page_store';
 
     /**
      * @var string

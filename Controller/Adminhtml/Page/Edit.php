@@ -11,9 +11,16 @@ use Amasty\ShopbyPage\Api\PageRepositoryInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Api\DataObjectHelper;
 
+/**
+ * Class Edit
+ *
+ * @package Amasty\ShopbyPage\Controller\Adminhtml\Page
+ */
 class Edit extends Action
 {
     /**
+     * Core registry
+     *
      * @var CoreRegistry
      */
     protected $_coreRegistry = null;

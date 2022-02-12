@@ -6,6 +6,11 @@ use Magento\Backend\Block\Widget;
 use Magento\Framework\Data\Form\Element\Renderer\RendererInterface;
 use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
 
+/**
+ * Class Option
+ *
+ * @package Amasty\ShopbyPage\Block\Adminhtml\Page\Edit\Tab\Selection
+ */
 class Option extends Widget implements RendererInterface
 {
     /**

@@ -4,17 +4,22 @@ namespace Amasty\ShopbyPage\Model;
 
 use Magento\Framework\Model\AbstractExtensibleModel;
 
+/**
+ * Class Page
+ *
+ * @package Amasty\ShopbyPage\Model
+ */
 class Page extends AbstractExtensibleModel
 {
     /**
      * Position of placing meta data in category
      */
-    public const POSITION_REPLACE = 'replace';
-    public const POSITION_AFTER = 'after';
-    public const POSITION_BEFORE = 'before';
+    const POSITION_REPLACE = 'replace';
+    const POSITION_AFTER = 'after';
+    const POSITION_BEFORE = 'before';
 
-    public const CATEGORY_FORCE_USE_CANONICAL = 'amshopby_page_force_use_canonical';
-    public const MATCHED_PAGE = 'amshopby_matched_page';
+    const CATEGORY_FORCE_USE_CANONICAL = 'amshopby_page_force_use_canonical';
+    const MATCHED_PAGE = 'amshopby_matched_page';
 
     /**
      * Initialize resource model

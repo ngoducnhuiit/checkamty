@@ -10,7 +10,7 @@ class SelectionTest extends \PHPUnit\Framework\TestCase
 {
     use Traits\ObjectManagerTrait;
 
-    public const TEST_COUNTER = ['test1', 'test2', 'test3', 'test4', 'test5'];
+    const TEST_COUNTER = ['test1', 'test2', 'test3', 'test4', 'test5'];
 
     /**
      * @var Selection

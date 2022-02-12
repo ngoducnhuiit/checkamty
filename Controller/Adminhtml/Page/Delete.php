@@ -6,6 +6,11 @@ use \Magento\Backend\App\Action;
 use Amasty\ShopbyPage\Api\Data\PageInterfaceFactory;
 use Amasty\ShopbyPage\Api\PageRepositoryInterface;
 
+/**
+ * Class Delete
+ *
+ * @package Amasty\ShopbyPage\Controller\Adminhtml\Page
+ */
 class Delete extends Action
 {
     /**

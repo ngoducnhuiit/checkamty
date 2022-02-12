@@ -18,8 +18,8 @@ use PHPUnit_Framework_MockObject_MockObject as MockObject;
  */
 class ValueTest extends \PHPUnit\Framework\TestCase
 {
-    use Traits\ReflectionTrait;
     use Traits\ObjectManagerTrait;
+    use Traits\ReflectionTrait;
 
     /**
      * @var Value
